@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import HoverCard from "../components/HoverCard";
 import cardData from "../scripts/cardData";
+import "./Home.css";
 
 function Home() {
   return (
