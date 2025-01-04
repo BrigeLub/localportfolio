@@ -16,6 +16,15 @@ function Home() {
           </div>
           <div className="circle"></div>
         </div>
+        <h3
+          style={{
+            textTransform: "uppercase",
+            fontFamily: "var(--header-font)",
+            fontSize: "3rem",
+          }}
+        >
+          Latest Projects
+        </h3>
         <div className="container">
           {cardData.map((item, index) => (
             <HoverCard
