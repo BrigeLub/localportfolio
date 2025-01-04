@@ -1,3 +1,9 @@
 .HoverCard-content {
-  background-color: aqua;
+  background-color: var(--primary-color);
+}
+.HoverCard {
+  display: flex;
+  text-decoration: none;
+  color: var(--background-color);
+  font-size: 2rem;
 }
