@@ -1,8 +1,9 @@
 .circle {
-  width: 20rem;
-  height: 20rem;
-  background-color: var(--primary-color);
+  width: 30rem;
+  height: 30rem;
   border-radius: 50%;
+  background: url(https://brigportfolio.twic.pics/face/) var(--primary-color);
+  background-size: cover;
   overflow: hidden; /* Ensures the image stays within the circle */
   display: flex; /* Optional: Centers the image */
   justify-content: center; /* Optional: Centers the image horizontally */
@@ -21,7 +22,6 @@
 
 .name {
   display: flex;
-  width: 779px;
   flex-direction: column;
   align-items: flex-start;
 }
@@ -29,6 +29,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 6rem;
   align-self: stretch;
+  gap: 4rem;
 }

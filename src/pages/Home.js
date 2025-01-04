@@ -14,12 +14,7 @@ function Home() {
             <h1>Brigitte Lubker</h1>
             <h2> UI/UX Developer</h2>
           </div>
-          <div className="circle">
-            <img
-              src="https://brigportfolio.twic.pics/profilepic"
-              alt="Profile Pic"
-            ></img>
-          </div>
+          <div className="circle"></div>
         </div>
         <div className="container">
           {cardData.map((item, index) => (
