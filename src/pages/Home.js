@@ -8,17 +8,30 @@ function Home() {
   return (
     <>
       <Header />
-      <h1>Welcome to My Portfolio</h1>
-      <div className="container">
-        {cardData.map((item, index) => (
-          <HoverCard
-            key={index}
-            image={item.image}
-            title={item.title}
-            description={item.description}
-            link={item.link}
-          />
-        ))}
+      <div className="contents">
+        <div className="namePlate">
+          <div className="name">
+            <h1>Brigitte Lubker</h1>
+            <h2> UI/UX Developer</h2>
+          </div>
+          <div className="circle">
+            <img
+              src="https://brigportfolio.twic.pics/profilepic"
+              alt="Profile Pic"
+            ></img>
+          </div>
+        </div>
+        <div className="container">
+          {cardData.map((item, index) => (
+            <HoverCard
+              key={index}
+              image={item.image}
+              title={item.title}
+              description={item.description}
+              link={item.link}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

@@ -1,10 +1,10 @@
 :root {
-  --primary-color: #a3bea4;
-  --background-color: #dedbd2;
+  --primary-color: #6aa06c;
+  --background-color: #fdfdfa;
   --text-color: #4a5759;
   --hover-color: #f1f367;
   --header-font: "Fugaz One", sans-serif;
-  --body-font: "Merriweather Sans", sans-serif;
+  --body-font: "K2D", sans-serif;
 }
 
 body {
@@ -12,10 +12,24 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
 }
-
+.contents {
+  display: flex;
+  padding: 145px 99px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 80px;
+  align-self: stretch;
+}
 h1 {
   font-family: var(--header-font);
-  text-align: center;
-  font-size: 4vw;
+  font-size: 4rem;
   color: var(--text-color);
+  margin: 0%;
+}
+h2 {
+  font-family: var(--body-font);
+  font-size: 3rem;
+  color: var(--text-color);
+  font-weight: normal;
+  margin: 0%;
 }
