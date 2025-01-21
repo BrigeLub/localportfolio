@@ -1,6 +1,6 @@
 .circle {
-  width: 30rem;
-  height: 30rem;
+  width: 25vw;
+  height: 25vw;
   border-radius: 50%;
   background: url(https://brigportfolio.twic.pics/face/) var(--primary-color);
   background-size: cover;

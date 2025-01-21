@@ -1,0 +1,19 @@
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.modal p {
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: 3vw;
+  color: #555;
+}
+.modal h2 {
+  margin: 0;
+  font-size: 3vw;
+  color: #333;
+  font-family: var(--header-font);
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}

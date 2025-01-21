@@ -19,6 +19,30 @@
   font-size: 1.5rem;
   text-decoration: underline;
 }
+.modal {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.modal-open {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  font-family: var(--header-font);
+  color: var(--background-color);
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+.modal-open:hover {
+  color: var(--hover-color);
+}
 
 .header__nav a:hover {
   color: var(--hover-color);

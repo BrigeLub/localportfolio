@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
-import HoverCard from "../components/HoverCard";
-import cardData from "../scripts/cardData";
+// import HoverCard from "../components/HoverCard";
+// import cardData from "../scripts/cardData";
 import "./Home.css";
 
 function Home() {
@@ -23,9 +23,9 @@ function Home() {
             fontSize: "3rem",
           }}
         >
-          Latest Projects
+          What I'm Up To
         </h3>
-        <div className="container">
+        {/* <div className="container">
           {cardData.map((item, index) => (
             <HoverCard
               key={index}
@@ -35,7 +35,13 @@ function Home() {
               link={item.link}
             />
           ))}
-        </div>
+        </div> */}
+        <iframe
+          src="https://widgets.sociablekit.com/linkedin-profile-posts/iframe/25513055"
+          title="LinkedIn Profile Activity"
+          width="100%"
+          height="1000"
+        ></iframe>
       </div>
     </>
   );
