@@ -2,7 +2,7 @@
   width: 25vw;
   height: 25vw;
   border-radius: 50%;
-  background: url(https://brigportfolio.twic.pics/face/) var(--primary-color);
+  background: url(https://i.imgur.com/3eHvTK3.jpeg) var(--primary-color);
   background-size: cover;
   overflow: hidden; /* Ensures the image stays within the circle */
   display: flex; /* Optional: Centers the image */
