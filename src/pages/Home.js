@@ -12,10 +12,18 @@ function Home() {
         <div className="namePlate">
           <div className="name">
             <h1>Brigitte Lubker</h1>
-            <h2> UI/UX Developer</h2>
+            <h2>UI/UX Developer</h2>
+            <h2>  <a 
+  href="https://www.artstation.com/brigittelub" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  Find me on ARTSTATION
+</a></h2>
           </div>
           <div className="circle"></div>
         </div>
+
         <h3
           style={{
             textTransform: "uppercase",
@@ -23,8 +31,10 @@ function Home() {
             fontSize: "3rem",
           }}
         >
+  
           WEB DESIGNS
         </h3>
+
         {/* <div className="container">
           {cardData.map((item, index) => (
             <HoverCard
@@ -36,16 +46,38 @@ function Home() {
             />
           ))}
         </div> */}
-        <iframe
-          src="https://widgets.sociablekit.com/linkedin-profile-posts/iframe/25513055"
-          title="LinkedIn Profile Activity"
-          width="100%"
-          height="1000"
-        ></iframe>
-        <iframe " width="800" height="450" src="https://embed.figma.com/design/1tsxs8yLoE4q68WDrbn0VT/IDM-211-001-bgl25-final?node-id=2-180&embed-host=share" allowfullscreen></iframe>
+
+        <div className="iframe-grid">
+          <div className="iframe-item">
+            <iframe
+              title="VW Site Redesign"
+              src="https://embed.figma.com/design/1tsxs8yLoE4q68WDrbn0VT/IDM-211-001-bgl25-final?node-id=0-1&embed-host=share"
+              allowFullScreen
+            ></iframe>
+            <div className="iframe-title">VW Site Redesign</div>
+          </div>
+
+          <div className="iframe-item">
+            <iframe
+              title="Personal Site"
+              src="https://embed.figma.com/design/irSdJUvWfJBc56Ij1Lq1Kp/APersonalSite?node-id=0-1&embed-host=share"
+              allowFullScreen
+            ></iframe>
+            <div className="iframe-title">A Personal Site Design</div>
+          </div>
+          <div className="iframe-item">
+            <iframe
+              title="Food Site"
+              src="https://embed.figma.com/design/g8kt0W8G8ZfFaIhSAsWhnB/IDM-211-001-bgl25-design02?node-id=0-1&embed-host=share"
+              allowFullScreen
+            ></iframe>
+            <div className="iframe-title">Food Site</div>
+          </div>
+        </div>
       </div>
     </>
   );
 }
 
 export default Home;
+
