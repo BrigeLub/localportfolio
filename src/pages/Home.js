@@ -23,7 +23,7 @@ function Home() {
             fontSize: "3rem",
           }}
         >
-          What I'm Up To
+          WEB DESIGNS
         </h3>
         {/* <div className="container">
           {cardData.map((item, index) => (
@@ -36,12 +36,8 @@ function Home() {
             />
           ))}
         </div> */}
-        <iframe
-          src="https://widgets.sociablekit.com/linkedin-profile-posts/iframe/25513055"
-          title="LinkedIn Profile Activity"
-          width="100%"
-          height="1000"
-        ></iframe>
+        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/irSdJUvWfJBc56Ij1Lq1Kp/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+        <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/1tsxs8yLoE4q68WDrbn0VT/IDM-211-001-bgl25-final?node-id=2-180&embed-host=share" allowfullscreen></iframe>
       </div>
     </>
   );
