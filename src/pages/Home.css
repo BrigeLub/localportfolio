@@ -1,14 +1,17 @@
 .circle {
-  width: 25vw;
-  height: 25vw;
+  width: clamp(180px, 40vw, 500px);
+
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: url(https://i.imgur.com/3eHvTK3.jpeg) var(--primary-color);
   background-size: cover;
-  overflow: hidden; /* Ensures the image stays within the circle */
-  display: flex; /* Optional: Centers the image */
-  justify-content: center; /* Optional: Centers the image horizontally */
-  align-items: center; /* Optional: Centers the image vertically */
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -27,33 +30,38 @@
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  gap: 4rem;
+  gap: 2vw;
 }
- .iframe-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    width: 100%;
-    padding: 1rem;
+.iframe-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem;
+}
+@media screen and (max-width: 600px) {
+  .iframe-grid {
+    grid-template-columns: 1fr; /* 1 column on small screens like iPhones */
   }
+}
 
-  .iframe-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.iframe-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .iframe-item iframe {
-    width: 100%;
-    height: 450px;
-    border: none;
-  }
+.iframe-item iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
 
-  .iframe-title {
-    margin-top: 0.5rem;
-    font-weight: bold;
-    text-align: center;
-  }
-  a{
-      color: var(--primary-color);
-  }
+.iframe-title {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+a {
+  color: var(--primary-color);
+}
