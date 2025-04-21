@@ -2,8 +2,11 @@ import React from "react";
 import Header from "../components/Header";
 // import HoverCard from "../components/HoverCard";
 // import cardData from "../scripts/cardData";
+import FigmaEmbed from "../scripts/figmaEmbed";
 import "./Home.css";
-
+import VW from "../images/VW.jpg";
+import JohnDoe from "../images/JohnDoe.jpg";
+import Food from "../images/FoodSite.jpg";
 function Home() {
   return (
     <>
@@ -46,33 +49,30 @@ function Home() {
             />
           ))}
         </div> */}
-
         <div className="iframe-grid">
           <div className="iframe-item">
-            <iframe
+            <FigmaEmbed
               title="VW Site Redesign"
-              src="https://embed.figma.com/design/1tsxs8yLoE4q68WDrbn0VT/IDM-211-001-bgl25-final?node-id=0-1&embed-host=share"
-              allowFullScreen
-            ></iframe>
-            <div className="iframe-title">VW Site Redesign</div>
+              embedUrl="https://embed.figma.com/design/1tsxs8yLoE4q68WDrbn0VT/IDM-211-001-bgl25-final?node-id=0-1&embed-host=share"
+              imageUrl={VW}
+              figmaLink="https://www.figma.com/design/1tsxs8yLoE4q68WDrbn0VT/IDM-211-001-bgl25-final?node-id=0-1&t=WFhWiTt5mflkF4vV-1"
+            />
           </div>
-
           <div className="iframe-item">
-            <iframe
+            <FigmaEmbed
               title="Personal Site"
-              src="https://embed.figma.com/design/irSdJUvWfJBc56Ij1Lq1Kp/APersonalSite?node-id=0-1&embed-host=share"
-              allowFullScreen
-            ></iframe>
-            <div className="iframe-title">A Personal Site Design</div>
+              embedUrl="https://embed.figma.com/design/irSdJUvWfJBc56Ij1Lq1Kp/APersonalSite?node-id=0-1&embed-host=share"
+              imageUrl={JohnDoe}
+              figmaLink="https://www.figma.com/design/irSdJUvWfJBc56Ij1Lq1Kp/APersonalSite?node-id=0-1&t=fI1lVqYAgabRkUy6-1"
+            />
           </div>
-
           <div className="iframe-item">
-            <iframe
-              title="Food Site"
-              src="https://embed.figma.com/design/NvoX3DClY0r1KWZ68lKPPc/IDM-211-001-bgl25-design02--Copy-?node-id=0-1&embed-host=share"
-              allowFullScreen
-            ></iframe>
-            <div className="iframe-title">Food Site</div>
+            <FigmaEmbed
+              title="Food Website"
+              embedUrl="https://embed.figma.com/design/NvoX3DClY0r1KWZ68lKPPc/IDM-211-001-bgl25-design02--Copy-?node-id=0-1&embed-host=share"
+              imageUrl={Food}
+              figmaLink="https://www.figma.com/design/NvoX3DClY0r1KWZ68lKPPc/IDM-211-001-bgl25-design02--Copy-?node-id=0-1&t=J5VNaTljy7lFoHMG-1"
+            />
           </div>
         </div>
       </div>
