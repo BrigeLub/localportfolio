@@ -25,8 +25,7 @@
   cursor: pointer;
 }
 
-/* Bigger screens: the preview fills the embed's box until the live embed
-   has loaded over it. */
+/* Bigger screens: the preview fills the embed's box until it's clicked. */
 @media screen and (min-width: 601px) {
   .figma-frame {
     height: 450px;
@@ -40,15 +39,39 @@
     border-radius: 0;
     box-shadow: none;
   }
-  .figma-frame iframe {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-  }
-  .figma-frame iframe.is-loaded {
-    opacity: 1;
-  }
+}
+
+.figma-poster {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.figma-poster__action {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  font-family: var(--header-font);
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  background-image: linear-gradient(transparent 58%, var(--hover-color) 58%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  padding: 0.2rem 0.7rem;
+  border-radius: 2px;
+  transition: background-size 0.18s ease-out;
+}
+.figma-poster:hover .figma-poster__action,
+.figma-poster:focus-visible .figma-poster__action {
+  background-size: 100% 100%;
+}
+.figma-poster:focus-visible {
+  outline: 3px solid var(--text-color);
+  outline-offset: 3px;
 }
 
 .iframe-title {
