@@ -1,31 +1,23 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
 
-# testing
-/coverage
+# next.js
+/.next
+next-env.d.ts
 
-# production
-/build
+# local image storage (production uses the Railway volume)
+/uploads
 
-# IDE and Editor Configurations
+# env
+.env
+.env.local
+
+# IDE and OS files
+.vs/
 .vscode/
-
-# OS specific files
 .DS_Store
 Thumbs.db
-.Spotlight-V100
-.Trashes
 
 # logs
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 *.log
-*.tmp
-
-# Build artifacts
-/dist/

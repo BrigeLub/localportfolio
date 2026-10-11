@@ -1,0 +1,62 @@
+:root {
+  --primary-color: #6aa06c;
+  --background-color: #fdfdfa;
+  --text-color: #4a5759;
+  --hover-color: #f1f367;
+  --header-font: var(--font-fugaz), "Fugaz One", sans-serif;
+  --body-font: var(--font-k2d), "K2D", sans-serif;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+.contents {
+  display: flex;
+  padding: 4vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4vw;
+  align-self: stretch;
+}
+h1 {
+  font-family: var(--header-font);
+  font-size: clamp(1rem, 5vw, 5rem);
+  color: var(--text-color);
+  margin: 0%;
+}
+h2 {
+  font-family: var(--body-font);
+  font-size: clamp(1rem, 3vw, 3rem);
+  color: var(--text-color);
+  font-weight: normal;
+  margin: 0%;
+}
+h3 {
+  font-size: clamp(1rem, 3vw, 3rem);
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.link-button {
+  font: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--primary-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}

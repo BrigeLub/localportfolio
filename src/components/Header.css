@@ -50,3 +50,9 @@
 .header__logo a:hover {
   color: var(--hover-color);
 }
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}

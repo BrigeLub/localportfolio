@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Brigitte Lubker — portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Next.js site with a searchable art gallery and an `/admin` page for uploading
+artwork from a phone or computer.
 
-## Available Scripts
+## How images work
 
-In the project directory, you can run:
+- **Your original file is kept exactly as uploaded**, byte for byte. Only you
+  can download it (from `/admin`).
+- On upload, the site makes four web-sized copies (480, 960, 1600 and 2400px
+  wide WebP). Visitors' browsers pick the smallest one that looks sharp on
+  their screen: a phone gallery loads ~50–250 KB per piece instead of 7 MB.
+- Colours stay in your phone's Display P3 profile, so saturated paint colours
+  aren't dulled on modern screens. Camera/location data is stripped from the
+  public copies.
+- Tick **Pixel art** when uploading sprites: those are never resized and are
+  scaled up with hard pixel edges instead of blurring.
+- iPhone HEIC photos: upload from the phone's browser and it converts them to
+  JPEG automatically. From a computer, export as JPEG first.
 
-### `npm start`
+## Running it locally
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install
+docker compose up -d                 # local Postgres on port 5433
+cp .env.example .env                 # then fill in the two admin values:
+npm run hash-password -- "your password"   # -> ADMIN_PASSWORD_HASH
+#   SESSION_SECRET: any long random string
+npx prisma migrate dev
+npm run dev                          # http://localhost:3000
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Uploads go to `./uploads` locally (gitignored).
 
-### `npm test`
+## Deploying
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Pushing to `main` deploys automatically on Railway (see `railway.toml`). There
+is no build folder to copy anywhere any more.
 
-### `npm run build`
+Railway needs: a Postgres service, a volume mounted at `/data` with
+`UPLOAD_DIR=/data/uploads`, plus `ADMIN_PASSWORD_HASH` and `SESSION_SECRET`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Where things are
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| | |
+|---|---|
+| Pages | `src/app/` (`page.js` = home, `gallery/`, `admin/`) |
+| Your existing components | `src/components/`, `src/views/` (plain CSS, same as before) |
+| Gallery + search + lightbox | `src/components/Gallery.tsx` |
+| Upload processing | `src/lib/storage.ts` |
+| Database schema | `prisma/schema.prisma` |
