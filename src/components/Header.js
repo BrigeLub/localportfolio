@@ -2,10 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import "./Header.css"; // For styling the header
 import ContactModal from "./ContactModal";
 
 function Header() {
+  const pathname = usePathname();
+
   const openModal = () => {
     const modal = document.getElementById("modal");
     modal?.showModal();
@@ -24,10 +27,13 @@ function Header() {
   };
   return (
     <header className="header">
-      <div className="header__logo"></div>
+      <div className="header__logo">
+        <Link href="/">Brigitte Lubker</Link>
+      </div>
       <nav className="header__nav">
-        <Link href="/">home</Link>
-        <Link href="/gallery">gallery</Link>
+        <Link href="/gallery" aria-current={pathname === "/gallery" ? "page" : undefined}>
+          gallery
+        </Link>
 
         <div>
           {/* Modal */}

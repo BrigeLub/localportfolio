@@ -7,8 +7,12 @@ function ContactModal() {
       <div className="modal-content">
         <h2>Let's Get in Touch!</h2>
 
-        <p>brigitte.lubker@gmail.com</p>
-        <p>(610) 235-7662</p>
+        <p>
+          <a href="mailto:brigitte.lubker@gmail.com">brigitte.lubker@gmail.com</a>
+        </p>
+        <p>
+          <a href="tel:+16102357662">(610) 235-7662</a>
+        </p>
         <p>Philadelphia, PA</p>
       </div>
     </div>

@@ -12,9 +12,9 @@ export const metadata = { title: "Gallery · Brigitte Lubker" };
 export default async function GalleryPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; tags?: string }>;
+  searchParams: Promise<{ q?: string; tag?: string }>;
 }) {
-  const { q = "", tags = "" } = await searchParams;
+  const { q = "", tag } = await searchParams;
   const artworks = await prisma.artwork.findMany({
     where: { published: true },
     orderBy: { createdAt: "desc" },
@@ -28,7 +28,7 @@ export default async function GalleryPage({
         <Gallery
           artworks={artworks.map(toPublic)}
           initialQuery={q}
-          initialTags={tags ? tags.split(",") : []}
+          initialTag={tag || null}
         />
       </main>
     </>

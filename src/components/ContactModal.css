@@ -6,12 +6,23 @@
 .modal p {
   margin: 0;
   font-family: var(--body-font);
-  font-size: 3vw;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
   color: #555;
+}
+/* These sit inside the header's nav, so undo its link spacing and colours. */
+.modal p a {
+  margin: 0;
+  font-weight: normal;
+  color: inherit;
+  text-decoration-color: var(--primary-color);
+}
+.modal p a:hover {
+  color: inherit;
+  background: var(--hover-color);
 }
 .modal h2 {
   margin: 0;
-  font-size: 3vw;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
   color: #333;
   font-family: var(--header-font);
   border-bottom: 1px solid #ddd;
