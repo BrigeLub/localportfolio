@@ -3,7 +3,9 @@
 
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: url(https://i.imgur.com/3eHvTK3.jpeg) var(--primary-color);
+  /* Resized from src/images/ProfilePic.jpeg (was a 4.6 MB imgur original). */
+  background: url(/images/profile-500.webp) var(--primary-color);
+  background-image: image-set(url(/images/profile-500.webp) 1x, url(/images/profile-1000.webp) 2x);
   background-size: cover;
   background-position: center;
   overflow: hidden;

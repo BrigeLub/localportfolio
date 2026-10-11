@@ -8,6 +8,10 @@ import "./Gallery.css";
 const srcSet = (a: PublicArtwork) => a.sources.map((s) => `${s.url} ${s.width}w`).join(", ");
 const largest = (a: PublicArtwork) => a.sources[a.sources.length - 1].url;
 const ratio = (a: PublicArtwork) => a.width / a.height;
+// Shared by the wall and the lightbox preview so both pick the same file and
+// the lightbox gets it straight from the cache.
+const thumbSizes = (a: PublicArtwork) =>
+  `(max-width: 600px) ${Math.ceil(ratio(a) * 170)}px, ${Math.ceil(ratio(a) * 340)}px`;
 
 function matches(a: PublicArtwork, words: string[], tag: string | null): boolean {
   if (tag && !a.tags.includes(tag)) return false;
@@ -181,7 +185,7 @@ function Wall({ artworks, onOpen }: { artworks: PublicArtwork[]; onOpen: (index:
               <img
                 src={a.pixelArt ? largest(a) : a.sources[0].url}
                 srcSet={a.pixelArt ? undefined : srcSet(a)}
-                sizes={`(max-width: 600px) ${Math.ceil(ratio(a) * 170)}px, ${Math.ceil(ratio(a) * 340)}px`}
+                sizes={thumbSizes(a)}
                 width={a.width}
                 height={a.height}
                 alt=""
@@ -212,7 +216,9 @@ function Lightbox({
   onTag: (tag: string) => void;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const full = useRef<HTMLImageElement>(null);
   const touchX = useRef<number | null>(null);
+  const [loadedId, setLoadedId] = useState<string | null>(null);
   const a = artworks[index];
   const count = artworks.length;
   const prev = () => onIndex((index - 1 + count) % count);
@@ -221,6 +227,10 @@ function Lightbox({
   useEffect(() => {
     ref.current?.showModal();
   }, []);
+
+  useEffect(() => {
+    if (full.current?.complete && full.current.naturalWidth > 0) setLoadedId(a.id);
+  }, [a.id]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -260,17 +270,41 @@ function Lightbox({
         onClick={(e) => e.target === e.currentTarget && ref.current?.close()}
       >
         <div className="lightbox__frame" onClick={(e) => e.target === e.currentTarget && ref.current?.close()}>
-          <img
-            key={a.id}
-            src={largest(a)}
-            srcSet={a.pixelArt ? undefined : srcSet(a)}
-            sizes="(min-width: 900px) 70vw, 100vw"
-            width={a.width}
-            height={a.height}
-            alt={a.title}
-            className={a.pixelArt ? "pixelated" : undefined}
+          {/* The thumbnail from the wall shows instantly (it's already
+              cached) and the full-size image fades in over it. */}
+          <div
+            className={loadedId === a.id ? "lightbox__art is-loaded" : "lightbox__art"}
             style={{ backgroundColor: a.color, "--ar": ratio(a) } as CSSProperties}
-          />
+          >
+            {!a.pixelArt && (
+              <img
+                key={`${a.id}-preview`}
+                className="lightbox__preview"
+                src={a.sources[0].url}
+                srcSet={srcSet(a)}
+                sizes={thumbSizes(a)}
+                alt=""
+                aria-hidden="true"
+              />
+            )}
+            <img
+              key={a.id}
+              ref={full}
+              className={a.pixelArt ? "lightbox__full pixelated" : "lightbox__full"}
+              src={largest(a)}
+              srcSet={a.pixelArt ? undefined : srcSet(a)}
+              sizes="(min-width: 900px) 70vw, 100vw"
+              width={a.width}
+              height={a.height}
+              alt={a.title}
+              onLoad={() => setLoadedId(a.id)}
+            />
+            {loadedId !== a.id && (
+              <span className="lightbox__loading" role="status">
+                loading
+              </span>
+            )}
+          </div>
         </div>
       </div>
 

@@ -3,12 +3,16 @@
 import React, { useState, useEffect } from "react";
 import "./FigmaEmbed.css";
 
+// The preview image shows straight away; on bigger screens the live Figma
+// embed (a few MB) loads on top of it and fades in once it's ready. Phones
+// only ever get the image, linking out to Figma.
 function FigmaEmbed({ title, embedUrl, imageUrl, figmaLink }) {
-  const [isMobile, setIsMobile] = useState(false);
+  const [showEmbed, setShowEmbed] = useState(false);
+  const [embedLoaded, setEmbedLoaded] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 600);
+      setShowEmbed(window.innerWidth > 600);
     };
 
     checkScreenSize();
@@ -19,21 +23,28 @@ function FigmaEmbed({ title, embedUrl, imageUrl, figmaLink }) {
 
   return (
     <div className="figma-embed">
-      {isMobile ? (
+      <div className="figma-frame">
         <a href={figmaLink} target="_blank" rel="noopener noreferrer">
           <img
             src={imageUrl.src ?? imageUrl}
             alt={`${title} preview`}
             className="figma-preview"
           />
-          <div className="iframe-title">{title}</div>
         </a>
-      ) : (
-        <>
-          <iframe title={title} src={embedUrl} allowFullScreen></iframe>
-          <div className="iframe-title">{title}</div>
-        </>
-      )}
+        {showEmbed && (
+          <iframe
+            title={title}
+            src={embedUrl}
+            loading="lazy"
+            allowFullScreen
+            onLoad={() => setEmbedLoaded(true)}
+            className={embedLoaded ? "is-loaded" : undefined}
+          ></iframe>
+        )}
+      </div>
+      <a href={figmaLink} target="_blank" rel="noopener noreferrer" className="iframe-title">
+        {title}
+      </a>
     </div>
   );
 }
