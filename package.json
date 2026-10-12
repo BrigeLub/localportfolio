@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "prisma migrate deploy && next start",
     "postinstall": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "hash-password": "node scripts/hash-password.mjs"

@@ -8,7 +8,7 @@
 #   - Set ADMIN_PASSWORD_HASH and SESSION_SECRET (see .env.example).
 
 [build]
-builder = "NIXPACKS"
+builder = "RAILPACK"
 
 [deploy]
 # Exec next directly so SIGTERM at deploy time hits `next`, not npm.

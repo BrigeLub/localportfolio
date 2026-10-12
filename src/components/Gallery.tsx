@@ -168,7 +168,12 @@ function Wall({ artworks, onOpen }: { artworks: PublicArtwork[]; onOpen: (index:
   const gap = phone ? 6 : 12;
   // Before the first measurement (the server render) there's no width to pack
   // against, so everything goes in one wrapping row at the target height.
-  const rows = width ? pack(artworks, width, height, gap) : [{ items: artworks.map((artwork, index) => ({ artwork, index })), full: false }];
+  const rows: Row[] =
+    artworks.length === 0
+      ? []
+      : width
+        ? pack(artworks, width, height, gap)
+        : [{ items: artworks.map((artwork, index) => ({ artwork, index })), full: false }];
 
   return (
     <div ref={ref} className="wall" style={{ "--gap": `${gap}px` } as CSSProperties}>
