@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Artwork {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @default("")
+  /// Lowercased, trimmed, deduplicated. Searched client-side.
+  tags        String[]
+  published   Boolean  @default(true)
+  /// Pixel art is served at its original size with nearest-neighbour scaling
+  /// in the browser, instead of being smoothed by resizing.
+  pixelArt    Boolean  @default(false)
+
+  /// Display dimensions (after EXIF rotation).
+  width       Int
+  height      Int
+  /// Average colour, shown as a placeholder while the image loads.
+  color       String
+
+  /// The untouched upload, on the volume under originals/. Admin-only.
+  originalKey  String
+  originalName String
+  originalSize Int
+  mimeType     String
+
+  /// Widths of the resized WebP copies under variants/. Empty for pixel art,
+  /// which has a single lossless copy instead.
+  widths      Int[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published, createdAt])
+}

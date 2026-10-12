@@ -1,0 +1,21 @@
+# Railway config.
+#
+# Service setup:
+#   - Attach a Postgres database; Railway injects DATABASE_URL.
+#   - Attach a Volume mounted at /data, and set UPLOAD_DIR=/data/uploads.
+#     Originals and resized copies live on the volume, NOT in the image, so a
+#     redeploy never takes the artwork with it.
+#   - Set ADMIN_PASSWORD_HASH and SESSION_SECRET (see .env.example).
+
+[build]
+builder = "RAILPACK"
+
+[deploy]
+# Exec next directly so SIGTERM at deploy time hits `next`, not npm.
+startCommand = "sh -c 'npx prisma migrate deploy && exec node node_modules/next/dist/bin/next start'"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 120
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+# A volume pins this service to a single replica. That's fine for a portfolio.

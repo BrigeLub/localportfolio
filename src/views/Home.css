@@ -1,0 +1,70 @@
+.circle {
+  width: clamp(180px, 40vw, 500px);
+
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  /* Resized from src/images/ProfilePic.jpeg (was a 4.6 MB imgur original). */
+  background: url(/images/profile-500.webp) var(--primary-color);
+  background-image: image-set(url(/images/profile-500.webp) 1x, url(/images/profile-1000.webp) 2x);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Spacing between cards */
+  padding: 16px; /* Space around the grid */
+  border-radius: 8px; /* Optional rounded corners for container */
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.namePlate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  gap: 2vw;
+}
+.iframe-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem;
+}
+@media screen and (max-width: 600px) {
+  .iframe-grid {
+    grid-template-columns: 1fr; /* 1 column on small screens like iPhones */
+  }
+}
+
+.iframe-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.iframe-item iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+
+.iframe-title {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+a {
+  color: var(--primary-color);
+}

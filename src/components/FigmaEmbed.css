@@ -1,0 +1,81 @@
+.figma-embed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.figma-frame {
+  position: relative;
+  width: 100%;
+}
+
+.figma-embed iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+
+.figma-preview {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* Bigger screens: the preview fills the embed's box until it's clicked. */
+@media screen and (min-width: 601px) {
+  .figma-frame {
+    height: 450px;
+  }
+  .figma-frame .figma-preview {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    object-fit: contain;
+    background: #1e1e1e;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.figma-poster {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.figma-poster__action {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  font-family: var(--header-font);
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  background-image: linear-gradient(transparent 58%, var(--hover-color) 58%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  padding: 0.2rem 0.7rem;
+  border-radius: 2px;
+  transition: background-size 0.18s ease-out;
+}
+.figma-poster:hover .figma-poster__action,
+.figma-poster:focus-visible .figma-poster__action {
+  background-size: 100% 100%;
+}
+.figma-poster:focus-visible {
+  outline: 3px solid var(--text-color);
+  outline-offset: 3px;
+}
+
+.iframe-title {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
